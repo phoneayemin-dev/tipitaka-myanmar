@@ -15,10 +15,12 @@ abstract class BookmarkRepository {
 }
 
 class BookmarkDatabaseRepository extends BookmarkRepository {
+  
   final dao = BookmarkDao();
 
   @override
   DatabaseProvider databaseProvider;
+
   BookmarkDatabaseRepository(this.databaseProvider);
 
   @override

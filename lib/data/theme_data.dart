@@ -2,6 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:theme_provider/theme_provider.dart';
 
 class MyTheme {
+  static final _light = AppTheme.light().copyWith(
+      id: 'default_light_theme',
+      description: 'default light theme',
+      data: ThemeData(fontFamily: 'NotoSansMyanmar'));
+
+  static final _dark = AppTheme.dark().copyWith(
+      id: 'default_dark_theme',
+      description: 'default dark theme',
+      data: ThemeData(brightness: Brightness.dark ,fontFamily: 'NotoSansMyanmar'));
+
   static final _grey = AppTheme(
       id: 'grey',
       description: 'grey',
@@ -49,20 +59,17 @@ class MyTheme {
       description: 'pink',
       data:
           ThemeData(primarySwatch: Colors.pink, fontFamily: 'NotoSansMyanmar'));
-    static final _red = AppTheme(
+  static final _red = AppTheme(
       id: "red",
       description: 'red',
-      data: ThemeData(
-          primarySwatch: Colors.red, fontFamily: 'NotoSansMyanmar'));        
+      data:
+          ThemeData(primarySwatch: Colors.red, fontFamily: 'NotoSansMyanmar'));
 
   static List<AppTheme> fetchAll() {
     // return [white, black, ];
     return [
-      AppTheme.light().copyWith(
-          id: 'default_light_theme',
-          description: 'default light theme',
-          data: ThemeData(fontFamily: 'NotoSansMyanmar')),
-      AppTheme.dark(),
+      _light,
+      _dark,
       _grey,
       _black,
       _red,

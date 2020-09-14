@@ -5,6 +5,7 @@ class BookDao implements Dao<Book> {
   final String tableName = 'book';
   final String columnID = 'id';
   final String columnName = 'name';
+  final String colunmCategoryID = 'category_id';
   @override
   List<Book> fromList(List<Map<String, dynamic>> query) {
     return query.map((e) => fromMap(e)).toList();

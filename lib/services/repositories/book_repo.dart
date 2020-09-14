@@ -16,9 +16,9 @@ class BookDatabaseRepository implements BookRepository {
   @override
   Future<List<Book>> getBooks(int categoryID) async {
     final db = await databaseProvider.database;
-    List<Map> maps = await db.query(
-        'SELECT ${dao.columnID}, ${dao.columnName} FROM ${dao.tableName}',
-        where: '$categoryID = ?',
+    List<Map> maps = await db.query(dao.tableName,
+        columns: [dao.columnID, dao.columnName],
+        where: '${dao.colunmCategoryID} = ?',
         whereArgs: [categoryID]);
     return dao.fromList(maps);
   }

@@ -74,33 +74,33 @@ class DatabaseProvider {
     return await openDatabase(path);
   }
 
-  Future<List<ListItem>> getBookListItem() async {
-    List<ListItem> bookListIem = [];
-    var dbClient = await database;
-    List<Map<String, dynamic>> maps =
-        await dbClient.query(TABLE_CATEGORY, columns: [
-      COLUMN_ID,
-      COLUMN_NAME,
-    ]);
-    List<Category> categories =
-        List.generate(maps.length, (index) => Category.fromMap(maps[index]));
-    for (int i = 0; i < categories.length; i++) {
-      bookListIem.add(CategoryItem(categories[i]));
-      List<BookItem> books = await _getBooks(categories[i]);
-      bookListIem.addAll(books);
-    }
-    return bookListIem;
-  }
+  // Future<List<ListItem>> getBookListItem() async {
+  //   List<ListItem> bookListIem = [];
+  //   var dbClient = await database;
+  //   List<Map<String, dynamic>> maps =
+  //       await dbClient.query(TABLE_CATEGORY, columns: [
+  //     COLUMN_ID,
+  //     COLUMN_NAME,
+  //   ]);
+  //   List<Category> categories =
+  //       List.generate(maps.length, (index) => Category.fromMap(maps[index]));
+  //   for (int i = 0; i < categories.length; i++) {
+  //     bookListIem.add(CategoryItem(categories[i]));
+  //     List<BookItem> books = await _getBooks(categories[i]);
+  //     bookListIem.addAll(books);
+  //   }
+  //   return bookListIem;
+  // }
 
-  Future<List<BookItem>> _getBooks(Category category) async {
-    var dbClient = await database;
-    List<Map<String, dynamic>> maps = await dbClient.query(TABLE_BOOK,
-        columns: [COLUMN_ID, COLUMN_NAME, COLUMN_FIRST_PAGE, COLUMN_LAST_PAGE],
-        where: "$COLUMN_CATEGORYID = ?",
-        whereArgs: [category.id]);
-    return List.generate(
-        maps.length, (index) => BookItem(Book.fromMap(maps[index])));
-  }
+  // Future<List<BookItem>> _getBooks(Category category) async {
+  //   var dbClient = await database;
+  //   List<Map<String, dynamic>> maps = await dbClient.query(TABLE_BOOK,
+  //       columns: [COLUMN_ID, COLUMN_NAME, COLUMN_FIRST_PAGE, COLUMN_LAST_PAGE],
+  //       where: "$COLUMN_CATEGORYID = ?",
+  //       whereArgs: [category.id]);
+  //   return List.generate(
+  //       maps.length, (index) => BookItem(Book.fromMap(maps[index])));
+  // }
 
   Future<Map<int, int>> getParagraphs(String bookID) async {
     var dbClient = await database;

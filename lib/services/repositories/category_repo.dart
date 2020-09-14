@@ -16,8 +16,10 @@ class CategoryDatabaseRepository implements CategoryRepository {
   @override
   Future<List<Category>> getCategories() async {
     final db = await databaseProvider.database;
-    List<Map> maps = await db.query('''
-    SELECT ${dao.columnID}, ${dao.columnName} FROM ${dao.tableName}''');
+    List<Map> maps = await db.query(
+      dao.tableName,
+      columns: [dao.columnID, dao.columnName]
+    );
     return dao.fromList(maps);
   }
 }

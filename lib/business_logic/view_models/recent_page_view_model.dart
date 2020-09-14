@@ -3,12 +3,12 @@ import 'package:tipitaka_myanmar/business_logic/models/recent.dart';
 import 'package:tipitaka_myanmar/services/database/database_provider.dart';
 import 'package:tipitaka_myanmar/services/repositories/recent_repo.dart';
 
-class RecentListViewModel extends ChangeNotifier {
+class RecentPageViewModel extends ChangeNotifier {
   List<Recent> recents = [];
+  RecentRepository _repository = RecentDatabaseRepository(DatabaseProvider());
 
   Future<void> fetchRecents() async {
-    recents =
-        await RecentDatabaseRepository(DatabaseProvider()).getRecents();
+    recents = await _repository.getRecents();
     notifyListeners();
   }
 
@@ -16,12 +16,12 @@ class RecentListViewModel extends ChangeNotifier {
     final Recent recent = recents[index];
     recents.removeAt(index);
     notifyListeners();
-    await RecentDatabaseRepository(DatabaseProvider()).delete(recent);
+    await _repository.delete(recent);
   }
 
   Future<void> deleteAll() async {
     recents.clear();
     notifyListeners();
-    await RecentDatabaseRepository(DatabaseProvider()).deleteAll();
+    await _repository.deleteAll();
   }
 }

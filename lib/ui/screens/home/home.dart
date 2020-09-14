@@ -59,7 +59,7 @@ class _HomeState extends State<Home> {
       case 1:
         return BookmarkPage();
         break;
-       case 2:
+      case 2:
         return RecentPage();
         break;
     }

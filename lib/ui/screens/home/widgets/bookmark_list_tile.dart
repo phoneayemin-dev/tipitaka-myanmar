@@ -2,30 +2,35 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:tipitaka_myanmar/app.dart';
 import 'package:tipitaka_myanmar/business_logic/models/book.dart';
-import 'package:tipitaka_myanmar/business_logic/models/recent.dart';
-import 'package:tipitaka_myanmar/business_logic/view_models/recent_page_view_model.dart';
+import 'package:tipitaka_myanmar/business_logic/models/bookmark.dart';
+import 'package:tipitaka_myanmar/business_logic/view_models/bookmark_page_view_model.dart';
 import 'package:tipitaka_myanmar/utils/mm_number.dart';
 
-class RecentListTile extends StatelessWidget {
-  final RecentPageViewModel vm;
+class BookmarkListTile extends StatelessWidget {
+  final BookmarkPageViewModel bookmarkViewmodel;
   final int index;
-  RecentListTile(this.vm, this.index);
+
+  const BookmarkListTile({Key key, this.bookmarkViewmodel, this.index})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final recent = vm.recents[index];
+    final bookmark = bookmarkViewmodel.bookmarks[index];
     return Slidable(
       actionPane: SlidableDrawerActionPane(),
       secondaryActions: [
         IconSlideAction(
           icon: Icons.delete,
           color: Colors.red,
-          onTap: () => vm.delete(index),
+          onTap: () {
+            bookmarkViewmodel.delete(index);
+          },
         )
       ],
       child: GestureDetector(
         child: ListTile(
-          title: Text(recent.bookName),
+          title: Text(bookmark.note),
+          subtitle: Text(bookmark.bookName),
           trailing: Container(
             width: 80,
             child: Row(
@@ -33,7 +38,7 @@ class RecentListTile extends StatelessWidget {
                 Text('နှာ - '),
                 Expanded(
                     child: Text(
-                  '${MmNumber.get(recent.pageNumber)}',
+                  '${MmNumber.get(bookmark.pageNumber)}',
                   textAlign: TextAlign.end,
                 )),
               ],
@@ -41,16 +46,16 @@ class RecentListTile extends StatelessWidget {
           ),
         ),
         onTap: () {
-          _openBook(context, recent);
+          _openBook(context, bookmark);
         },
       ),
     );
   }
 
-  _openBook(BuildContext context, Recent recent) {
+  _openBook(BuildContext context, Bookmark bookmark) {
     Navigator.pushNamed(context, ReaderRoute, arguments: {
-      'book': Book(recent.bookID, recent.bookName),
-      'currentPage': recent.pageNumber
+      'book': Book(bookmark.bookID, bookmark.bookName),
+      'currentPage': bookmark.pageNumber
     });
   }
 }
