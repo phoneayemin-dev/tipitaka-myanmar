@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tipitaka_myanmar/business_logic/view_models/reader_view_model.dart';
@@ -8,7 +10,9 @@ class MyPageView extends StatelessWidget {
   Widget build(BuildContext context) {
     print('building pageview');
     final vm = Provider.of<ReaderViewModel>(context);
-    final PageController _pageController = PageController(initialPage: vm.currentPage - 1);
+    final PageController _pageController = PageController(
+      initialPage: vm.currentPage - 1,
+    );
 
     if (vm.pages == null) {
       return Center(
@@ -23,6 +27,9 @@ class MyPageView extends StatelessWidget {
           print('building page ${index + 1}');
           return WebView(
             initialUrl: vm.getPageContent(index).toString(),
+            gestureRecognizers: Set()
+              ..add(Factory<VerticalDragGestureRecognizer>(
+                  () => VerticalDragGestureRecognizer())),
             onWebViewCreated: (controller) => vm.webViewController = controller,
           );
         },

@@ -16,12 +16,14 @@ class GotoDialog extends StatelessWidget {
         vm.init();
         return vm;
       },
-      child: Dialog(
-        shape: RoundedRectangleBorder(
-            side: BorderSide.none,
-            borderRadius: BorderRadius.circular(_radius)),
-        elevation: 10.0,
-        child: dialogContent(),
+      child: SingleChildScrollView(
+              child: Dialog(
+          shape: RoundedRectangleBorder(
+              side: BorderSide.none,
+              borderRadius: BorderRadius.circular(_radius)),
+          elevation: 10.0,
+          child: dialogContent(),
+        ),
       ),
     );
   }
