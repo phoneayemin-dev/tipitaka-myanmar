@@ -27,10 +27,13 @@ class MyPageView extends StatelessWidget {
           print('building page ${index + 1}');
           return WebView(
             initialUrl: vm.getPageContent(index).toString(),
+            javascriptMode: JavascriptMode.unrestricted,
             gestureRecognizers: Set()
               ..add(Factory<VerticalDragGestureRecognizer>(
                   () => VerticalDragGestureRecognizer())),
             onWebViewCreated: (controller) => vm.webViewController = controller,
+            onPageFinished: (_) => vm.webViewController.evaluateJavascript(
+                'document.getElementById("goto_001").scrollIntoView();'),
           );
         },
         onPageChanged: vm.onPageChanged,

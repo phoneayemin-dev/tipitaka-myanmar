@@ -35,8 +35,13 @@ class App extends StatelessWidget {
           screen = Home();
           break;
         case ReaderRoute:
+          final currentPage =
+              arguments['currentPage'] == null ? 1 : arguments['currentPage'];
           screen = Reader(
-              book: arguments['book'], currentPage: arguments['currentPage']);
+            book: arguments['book'],
+            currentPage: currentPage,
+            textToHighlight: arguments['textToHighlight'],
+          );
           break;
         default:
           return null;

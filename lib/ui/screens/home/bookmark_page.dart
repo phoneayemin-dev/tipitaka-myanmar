@@ -1,8 +1,12 @@
-import 'package:adaptive_dialog/adaptive_dialog.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:theme_provider/theme_provider.dart';
 import 'package:tipitaka_myanmar/business_logic/view_models/bookmark_page_view_model.dart';
+import 'package:tipitaka_myanmar/ui/dialogs/confirm_dialog.dart';
 import 'package:tipitaka_myanmar/ui/screens/home/widgets/bookmark_list_tile.dart';
+
+// enum OkCancelAction { OK, CANCEL }
 
 class BookmarkPage extends StatefulWidget {
   @override
@@ -32,13 +36,17 @@ class _BookmarkPageState extends State<BookmarkPage> {
                 : ListView.separated(
                     itemCount: vm.bookmarks.length,
                     itemBuilder: (context, index) {
-                      return BookmarkListTile(
-                          bookmarkViewmodel: vm, index: index);
-                    },separatorBuilder: (context, index) {
-                  return Divider(
-                    color: Colors.grey,
-                  );
-                });
+                      return GestureDetector(
+                                              child: BookmarkListTile(
+                            bookmarkViewmodel: vm, index: index),
+                            onTap: () => vm.openBook(vm.bookmarks[index], context),
+                      );
+                    },
+                    separatorBuilder: (context, index) {
+                      return Divider(
+                        color: Colors.grey,
+                      );
+                    });
           },
         ),
       ),
@@ -58,12 +66,8 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
         IconButton(
             icon: Icon(Icons.delete),
             onPressed: () async {
-              final result = await showOkCancelAlertDialog(
-                  context: context,
-                  message: 'မှတ်စုအားလုံးကို ဖျက်ရန် သေချာပြီလား',
-                  cancelLabel: 'မဖျက်တော့ဘူး',
-                  okLabel: 'ဖျက်မယ်');
-              if (result == OkCancelResult.ok) {
+              final result = await _getConfirmataion(context);
+              if (result == OkCancelAction.OK) {
                 vm.deleteAll();
               }
             })
@@ -73,4 +77,18 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize => new Size.fromHeight(AppBar().preferredSize.height);
+
+  Future<OkCancelAction> _getConfirmataion(BuildContext context) async {
+    return await showDialog<OkCancelAction>(
+        context: context,
+        builder: (context) {
+          return ThemeConsumer(
+            child: ConfirmDialog(
+              message: 'မှတ်သားထားသမျှ အားလုံးကို ဖျက်ရန် သေချာပြီလား',
+              okLabel: 'ဖျက်မယ်',
+              cancelLabel: 'မဖျက်တော့ဘူး',
+            ),
+          );
+        });
+  }
 }

@@ -35,7 +35,7 @@ class BookmarkListTile extends StatelessWidget {
             width: 80,
             child: Row(
               children: [
-                Text('နှာ - '),
+                Text('နှာ   - '),
                 Expanded(
                     child: Text(
                   '${MmNumber.get(bookmark.pageNumber)}',

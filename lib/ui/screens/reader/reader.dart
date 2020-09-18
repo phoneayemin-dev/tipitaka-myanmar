@@ -9,16 +9,19 @@ import 'package:tipitaka_myanmar/ui/screens/reader/widgets/page_view.dart';
 class Reader extends StatelessWidget {
   final Book book;
   final int currentPage;
-  const Reader({Key key, @required this.book, @required this.currentPage})
+  final String textToHighlight;
+  const Reader({Key key, @required this.book, this.currentPage, this.textToHighlight})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     print('current Page in Reader Screen: $currentPage');
+    print('textToHighlight in Reader Screen: $textToHighlight');
+
     return ChangeNotifierProvider<ReaderViewModel>(
       create: (context) {
         ReaderViewModel vm = ReaderViewModel(
-            context: context, book: book, currentPage: currentPage);
+            context: context, book: book, currentPage: currentPage, textToHighlight: textToHighlight);
         // vm.currentPage = 1;
         vm.loadAllData();
         return vm;

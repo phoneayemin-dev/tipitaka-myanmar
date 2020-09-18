@@ -1,7 +1,8 @@
-import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:theme_provider/theme_provider.dart';
 import 'package:tipitaka_myanmar/business_logic/view_models/reader_view_model.dart';
+import 'package:tipitaka_myanmar/ui/dialogs/simple_input_dialog.dart';
 
 class ReaderAppBar extends StatelessWidget implements PreferredSizeWidget {
   const ReaderAppBar({Key key}) : super(key: key);
@@ -31,14 +32,21 @@ class ReaderAppBar extends StatelessWidget implements PreferredSizeWidget {
   Size get preferredSize => new Size.fromHeight(AppBar().preferredSize.height);
 
   void _addBookmark(ReaderViewModel vm, BuildContext context) async {
-    final texts = await showTextInputDialog(
-        context: context,
-        title: 'စာမှတ်',
-        textFields: const [DialogTextField(hintText: 'မှတ်လိုသောစာသား ထည့်ပါ')],
-        okLabel: 'မှတ်သားမယ်',
-        cancelLabel: 'မမှတ်တော့ဘူး');
-    if (texts != null) {
-      vm.saveToBookmark(texts[0]);
+    final note = await showDialog<String>(
+      context: context,
+      builder: (context) {
+        return ThemeConsumer(
+          child: SimpleInputDialog(
+            hintText: 'မှတ်လိုသောစာသား ထည့်ပါ',
+            cancelLabel: 'မမှတ်တော့ဘူး',
+            okLabel: 'မှတ်မယ်',
+          ),
+        );
+      },
+    );
+    print(note);
+    if (note != null) {
+      vm.saveToBookmark(note);
     }
   }
 }

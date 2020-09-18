@@ -16,9 +16,11 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 const kdartTheme = 'default_dark_theme';
 const kblackTheme = 'black';
+const String kGotoID = 'goto_001';
 
 class ReaderViewModel with ChangeNotifier {
   final Book book;
+  final String textToHighlight;
   int currentPage;
   List<String> pages;
   int numberOfPage;
@@ -30,7 +32,12 @@ class ReaderViewModel with ChangeNotifier {
   WebViewController webViewController;
   final BuildContext context;
 
-  ReaderViewModel({this.context, this.book, this.currentPage});
+  ReaderViewModel({
+    this.context,
+    this.book,
+    this.currentPage,
+    this.textToHighlight,
+  });
 
   Future<void> loadAllData() async {
     print('loading all required data');
@@ -84,6 +91,13 @@ class ReaderViewModel with ChangeNotifier {
   }
 
   Uri getPageContent(int index) {
+    String pageContent = pages[index];
+    if (textToHighlight != null) {
+      pageContent = pageContent.replaceAll(
+          textToHighlight, '<span class="highlight">$textToHighlight</span>');
+      pageContent = pageContent.replaceFirst(
+          '<span class="highlight">', '<span class="highlight" id="$kGotoID">');
+    }
     return Uri.dataFromString('''
     <!DOCTYPE html>
           <html>
@@ -95,7 +109,7 @@ class ReaderViewModel with ChangeNotifier {
           </style>
           <body>
           <p>${MmNumber.get(index + 1)}</p>
-          ${pages[index]}
+          $pageContent
           </body>
           </html>
     ''', mimeType: 'text/html', encoding: Encoding.getByName('utf-8'));

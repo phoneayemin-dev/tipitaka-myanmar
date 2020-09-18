@@ -16,13 +16,16 @@ class GotoDialog extends StatelessWidget {
         vm.init();
         return vm;
       },
-      child: SingleChildScrollView(
-              child: Dialog(
-          shape: RoundedRectangleBorder(
-              side: BorderSide.none,
-              borderRadius: BorderRadius.circular(_radius)),
-          elevation: 10.0,
-          child: dialogContent(),
+      child: Align(
+        alignment: Alignment.center,
+        child: SingleChildScrollView(
+          child: Dialog(
+            shape: RoundedRectangleBorder(
+                side: BorderSide.none,
+                borderRadius: BorderRadius.circular(_radius)),
+            elevation: 10.0,
+            child: dialogContent(),
+          ),
         ),
       ),
     );
@@ -53,12 +56,14 @@ class GotoDialog extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 16.0, right: 16.0),
                   child: TextField(
-                      decoration: InputDecoration(
-                          hintText: vm.selected == Goto.page
-                              ? vm.pagehintText
-                              : vm.parahintText),
-                      onChanged: vm.validate,
-                      keyboardType: TextInputType.number),
+                    decoration: InputDecoration(
+                        hintText: vm.selected == Goto.page
+                            ? vm.pagehintText
+                            : vm.parahintText),
+                    onChanged: vm.validate,
+                    keyboardType: TextInputType.number,
+                    autofocus: true,
+                  ),
                 ),
                 ListTile(
                   title: const Text('စာမျက်နှာ'),
@@ -87,10 +92,9 @@ class GotoDialog extends StatelessWidget {
                   margin: EdgeInsets.all(8.0),
                   child: FlatButton(
                     onPressed: () => Navigator.of(context).pop(),
-                    child: Text('မသွားတော့ဘူး'),
-                    // textColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(_radius - 8),
+                    child: Text(
+                      'မသွားတော့ဘူး',
+                      style: TextStyle(color: Theme.of(context).accentColor),
                     ),
                   ),
                 ),
@@ -103,11 +107,11 @@ class GotoDialog extends StatelessWidget {
                             onClickOK(context, vm);
                           }
                         : null,
-                    child: Text('သွားမယ်'),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(_radius - 8),
+                    child: Text(
+                      'သွားမယ်',),
+                      textColor: Theme.of(context).accentColor,
                     ),
-                  ),
+                    
                 ),
               ],
             )

@@ -32,6 +32,6 @@ class BookItem implements ListItem {
 
   Widget build(BuildContext context) => Text(
         book.name,
-        style: TextStyle(fontSize: 18),
+        style: TextStyle(fontSize: 20),
       );
 }

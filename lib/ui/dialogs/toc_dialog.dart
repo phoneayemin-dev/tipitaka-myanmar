@@ -7,26 +7,24 @@ class TocDialog extends StatelessWidget {
   TocDialog(this.bookID);
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Column(
+    return Scaffold(
+      body: Column(
         children: [
-          Stack(
-            alignment: Alignment.center,
-            children: [Text(
+          Stack(alignment: Alignment.center, children: [
+            Text(
               'မာတိကာ',
               style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
             ),
             Align(
-              alignment: Alignment.centerRight,
-              child: Padding(
-                padding: const EdgeInsets.only(right: 16.0),
-                child: IconButton(
-                  icon: Icon(Icons.close),
-                  onPressed: () =>  Navigator.pop(context),
-                ),
-              ))
-            ]
-          ),
+                alignment: Alignment.centerRight,
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 16.0),
+                  child: IconButton(
+                    icon: Icon(Icons.close),
+                    onPressed: () => Navigator.pop(context),
+                  ),
+                ))
+          ]),
           Divider(),
           FutureBuilder<List<TocListItem>>(
               future: TocViewModel(bookID).fetchTocListItems(),
@@ -34,20 +32,23 @@ class TocDialog extends StatelessWidget {
                 if (snapshot.hasData) {
                   final listItems = snapshot.data;
                   return Expanded(
-                    child: ListView.builder(
-                        itemCount: listItems.length,
-                        itemBuilder: (context, index) {
-                          return GestureDetector(
-                            onTap: () {
-                              final pageNumber =
-                                  listItems[index].getPageNumber();
-                              Navigator.pop(context, pageNumber);
-                            },
-                            child: ListTile(
-                              title: listItems[index].build(context),
-                            ),
-                          );
-                        }),
+                    child: ListView.separated(
+                      itemCount: listItems.length,
+                      itemBuilder: (context, index) {
+                        return GestureDetector(
+                          onTap: () {
+                            final pageNumber = listItems[index].getPageNumber();
+                            Navigator.pop(context, pageNumber);
+                          },
+                          child: ListTile(
+                            title: listItems[index].build(context),
+                          ),
+                        );
+                      },
+                      separatorBuilder: (context, index) {
+                        return Divider(height: 1, indent: 16.0, endIndent: 16.0);
+                      },
+                    ),
                   );
                 } else {
                   return Container(

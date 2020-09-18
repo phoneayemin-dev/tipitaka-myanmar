@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tipitaka_myanmar/app.dart';
+import 'package:tipitaka_myanmar/business_logic/models/book.dart';
 import 'package:tipitaka_myanmar/business_logic/models/recent.dart';
 import 'package:tipitaka_myanmar/services/database/database_provider.dart';
 import 'package:tipitaka_myanmar/services/repositories/recent_repo.dart';
@@ -23,5 +25,11 @@ class RecentPageViewModel extends ChangeNotifier {
     recents.clear();
     notifyListeners();
     await _repository.deleteAll();
+  }
+
+  void openBook(Recent recent, BuildContext context) {
+    final book = Book(recent.bookID, recent.bookName);
+    Navigator.pushNamed(context, ReaderRoute,
+        arguments: {'book': book, 'currentPage': recent.bookName,});
   }
 }

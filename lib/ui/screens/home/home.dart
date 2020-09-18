@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:theme_provider/theme_provider.dart';
 import 'package:tipitaka_myanmar/ui/screens/home/bookmark_page.dart';
 import 'package:tipitaka_myanmar/ui/screens/home/recent_page.dart';
+import 'package:tipitaka_myanmar/ui/screens/home/search_page.dart';
 
 import 'home_page.dart';
 
@@ -24,7 +25,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
         body: _getScreen(_currentIndex),
         bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
+          type: BottomNavigationBarType.shifting,
           backgroundColor: _backgroundColor,
           selectedItemColor: _selectedItemColor,
           unselectedItemColor: _unselectedItemColor,
@@ -61,6 +62,9 @@ class _HomeState extends State<Home> {
         break;
       case 2:
         return RecentPage();
+        break;
+      case 3:
+        return SearchPage();
         break;
     }
   }

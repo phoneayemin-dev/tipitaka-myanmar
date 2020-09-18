@@ -15,7 +15,8 @@ class HomePage extends StatelessWidget {
               icon: Icon(Icons.palette),
               onPressed: () => showDialog(
                   context: context,
-                  builder: (_) => ThemeConsumer(child: ThemeDialog())))
+                  builder: (_) => ThemeConsumer(child: ThemeDialog(hasDescription: false,)))),
+                  IconButton(icon: Icon(Icons.info), onPressed: (){})
         ],
       ),
       body: FutureBuilder(
@@ -51,7 +52,7 @@ class HomePage extends StatelessWidget {
       BookItem bookItem = listItem;
       print('book name: ${bookItem.book.name}');
       Navigator.pushNamed(context, ReaderRoute,
-          arguments: {'book': bookItem.book, 'currentPage' : 1});
+          arguments: {'book': bookItem.book});
     }
   }
 }
