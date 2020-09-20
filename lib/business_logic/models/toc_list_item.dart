@@ -35,7 +35,8 @@ class TocHeadingTwo implements TocListItem {
   Widget build(BuildContext context) {
     return Padding(
         padding: EdgeInsets.only(left: 16.0),
-        child: Text(toc.name, style: TextStyle(fontSize: 18)));
+        child: Text(toc.name,
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)));
   }
 }
 
@@ -52,7 +53,7 @@ class TocHeadingThree implements TocListItem {
   Widget build(BuildContext context) {
     return Padding(
         padding: EdgeInsets.only(left: 32.0),
-        child: Text(toc.name, style: TextStyle(fontSize: 16)));
+        child: Text(toc.name, style: TextStyle(fontSize: 18)));
   }
 }
 
@@ -67,7 +68,9 @@ class TocHeadingFour implements TocListItem {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(padding: EdgeInsets.only(left: 48.0), child: Text(toc.name, style: TextStyle(fontSize: 16)));
+    return Padding(
+        padding: EdgeInsets.only(left: 48.0),
+        child: Text(toc.name, style: TextStyle(fontSize: 18)));
   }
 }
 
@@ -82,6 +85,8 @@ class TocHeadingFive implements TocListItem {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(padding: EdgeInsets.only(left: 64.0), child: Text(toc.name, style: TextStyle(fontSize: 16)));
+    return Padding(
+        padding: EdgeInsets.only(left: 64.0),
+        child: Text(toc.name, style: TextStyle(fontSize: 18)));
   }
 }

@@ -36,16 +36,18 @@ class SearchPage extends StatelessWidget {
                             separatorBuilder: (context, index) => Divider(),
                           )),
                 SearchBar(onSubmitted: (searchWord) async {
-                  final ProgressDialog pr = ProgressDialog(context);
-                  pr.style(message: 'ရှာနေဆဲ');
-                  await pr.show();
-                  await vm.doSearch(searchWord);
-                  await pr.hide();
-                  final info = vm.results.isEmpty
-                      ? 'ရှာမတွေ့ပါ'
-                      : 'တွေ့ရှိမှု - ${MmNumber.get(vm.results.length)} ကြိမ်';
-                  final snackBar = SnackBar(content: Text(info));
-                  Scaffold.of(context).showSnackBar(snackBar);
+                  if (searchWord.trim().isNotEmpty) {
+                    final ProgressDialog pr = ProgressDialog(context);
+                    pr.style(message: 'ရှာနေဆဲ');
+                    await pr.show();
+                    await vm.doSearch(searchWord.trim());
+                    await pr.hide();
+                    final info = vm.results.isEmpty
+                        ? 'ရှာမတွေ့ပါ'
+                        : 'တွေ့ရှိမှု - ${MmNumber.get(vm.results.length)} ကြိမ်';
+                    final snackBar = SnackBar(content: Text(info));
+                    Scaffold.of(context).showSnackBar(snackBar);
+                  }
                 }),
               ],
             );

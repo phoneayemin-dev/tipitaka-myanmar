@@ -20,16 +20,20 @@ class ParagraphDatabaseRepository implements ParagraphRepository {
   @override
   Future<int> getFirstParagraph(String bookID) async {
     final db = await databaseProvider.database;
-    List<Map> maps = await db.query(tableName, columns: [columnParagraphNumber], where: '$columnBookId = ?', 
-    whereArgs: [bookID]);
+    List<Map> maps = await db.query(tableName,
+        columns: [columnParagraphNumber],
+        where: '$columnBookId = ?',
+        whereArgs: [bookID]);
     return maps.first[columnParagraphNumber];
   }
 
   @override
   Future<int> getLastParagraph(String bookID) async {
     final db = await databaseProvider.database;
-    List<Map> maps = await db.query(tableName, columns: [columnParagraphNumber], where: '$columnBookId = ?', 
-    whereArgs: [bookID]);
+    List<Map> maps = await db.query(tableName,
+        columns: [columnParagraphNumber],
+        where: '$columnBookId = ?',
+        whereArgs: [bookID]);
     return maps.last[columnParagraphNumber];
   }
 

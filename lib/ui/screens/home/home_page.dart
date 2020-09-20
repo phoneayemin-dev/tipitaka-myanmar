@@ -15,8 +15,15 @@ class HomePage extends StatelessWidget {
               icon: Icon(Icons.palette),
               onPressed: () => showDialog(
                   context: context,
-                  builder: (_) => ThemeConsumer(child: ThemeDialog(hasDescription: false,)))),
-                  IconButton(icon: Icon(Icons.info), onPressed: (){})
+                  builder: (_) => ThemeConsumer(
+                          child: ThemeDialog(
+                        hasDescription: false,
+                      )))),
+          IconButton(
+              icon: Icon(Icons.info),
+              onPressed: () {
+                _showAboutDialog(context);
+              })
         ],
       ),
       body: FutureBuilder(
@@ -55,4 +62,24 @@ class HomePage extends StatelessWidget {
           arguments: {'book': bookItem.book});
     }
   }
+
+  _showAboutDialog(BuildContext context) {
+    showAboutDialog(context: context,
+        applicationName: 'ပိဋကတ်သုံးပုံ ပါဠိတော် မြန်မာပြန်',
+        applicationVersion: 'ဗားရှင်း။ ။ ၁',
+        children: [
+          Text('''
+                  ကျမ်းစာများ
+          အချို့သောပါဠိတော်ကျမ်းများအတွက် မြန်မာပြန်မရှိပါ။ ဥပမာ - ပဋ္ဌာန်းကျမ်းစသည်
+
+                  စာမျက်နှာများ
+          ပိဋကတ်မြန်မာပြန်ကျမ်းစာအုပ်များကို အကြိမ်များစွာ ထုတ်ဝေခဲ့ရာတွင် တကြိမ်နှင့်တကြိမ် စာမျက်နှာအရေအတွက် မတူပါ။ (တူသည့်အကြိမ်လည်း တူ) ထို့ကြောင့် ဆဋ္ဌမူပါဠိစာအုပ်တို့ကဲ့သို့ စာမျက်နှာကိုးကားရန် အဆင်မပြေနိုင်ကြောင်း အသိပေးပါသည်။
+          နောင်အလျဉ်းသင့်က ၂၀၁၁ မူနှင့် စာမျက်နှာ တူညီအောင် ပြုလုပ်ဘို့ ကြံထားပါသည်။
+
+                  စာရှာ
+          ယူနီကုဒ်အသုံးပြု၍ ရှာနိုင်ပါသည်။
+          ''')
+        ]);
+  }
+
 }

@@ -32,8 +32,14 @@ class MyPageView extends StatelessWidget {
               ..add(Factory<VerticalDragGestureRecognizer>(
                   () => VerticalDragGestureRecognizer())),
             onWebViewCreated: (controller) => vm.webViewController = controller,
-            onPageFinished: (_) => vm.webViewController.evaluateJavascript(
-                'document.getElementById("goto_001").scrollIntoView();'),
+            onPageFinished: (_) {
+              vm.webViewController.evaluateJavascript('''
+                  var goto = document.getElementById("goto_001");
+                  if(goto != null){
+                    goto.scrollIntoView();
+                  }
+                  ''');
+            },
           );
         },
         onPageChanged: vm.onPageChanged,

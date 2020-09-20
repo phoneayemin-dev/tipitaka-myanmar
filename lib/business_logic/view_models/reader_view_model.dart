@@ -8,6 +8,7 @@ import 'package:tipitaka_myanmar/business_logic/models/bookmark.dart';
 import 'package:tipitaka_myanmar/business_logic/models/recent.dart';
 import 'package:tipitaka_myanmar/services/database/database_provider.dart';
 import 'package:tipitaka_myanmar/services/repositories/bookmark_repo.dart';
+import 'package:tipitaka_myanmar/services/repositories/paragraph_repo.dart';
 import 'package:tipitaka_myanmar/services/repositories/recent_repo.dart';
 import 'package:tipitaka_myanmar/services/storage/asset_book_provider.dart';
 import 'package:tipitaka_myanmar/utils/mm_number.dart';
@@ -113,6 +114,27 @@ class ReaderViewModel with ChangeNotifier {
           </body>
           </html>
     ''', mimeType: 'text/html', encoding: Encoding.getByName('utf-8'));
+  }
+
+  Future<int> getFirstParagraph() async {
+    final DatabaseProvider databaseProvider = DatabaseProvider();
+    final ParagraphRepository repository =
+        ParagraphDatabaseRepository(databaseProvider);
+    return await repository.getFirstParagraph(book.id);
+  }
+
+  Future<int> getLastParagraph() async {
+    final DatabaseProvider databaseProvider = DatabaseProvider();
+    final ParagraphRepository repository =
+        ParagraphDatabaseRepository(databaseProvider);
+    return await repository.getLastParagraph(book.id);
+  }
+
+  Future<int> getPageNumber(int paragraphNumber) async {
+    final DatabaseProvider databaseProvider = DatabaseProvider();
+    final ParagraphRepository repository =
+        ParagraphDatabaseRepository(databaseProvider);
+    return await repository.getPageNumber(book.id, paragraphNumber);
   }
 
   Future onPageChanged(int index) async {

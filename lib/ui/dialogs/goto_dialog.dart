@@ -1,130 +1,194 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:tipitaka_myanmar/business_logic/models/book.dart';
-import 'package:tipitaka_myanmar/business_logic/view_models/goto_view_model.dart';
+import 'package:toggle_switch/toggle_switch.dart';
 
-class GotoDialog extends StatelessWidget {
-  final Book book;
-  final double _radius = 16.0;
-  GotoDialog(this.book);
+enum GotoType { page, paragraph }
+
+class GotoDialogResult {
+  final int number;
+  final GotoType type;
+  GotoDialogResult(this.number, this.type);
+}
+
+class GotoDialog extends StatefulWidget {
+  final int firstPage;
+  final int lastPage;
+  final int firstParagraph;
+  final int lastParagraph;
+  final double radius;
+
+  GotoDialog(
+      {Key key,
+      this.firstPage,
+      this.lastPage,
+      this.firstParagraph,
+      this.lastParagraph,
+      this.radius = 16.0})
+      : super(key: key);
+
+  @override
+  _GotoDialogState createState() => _GotoDialogState(
+      firstPage: firstPage,
+      lastPage: lastPage,
+      firstParagraph: firstParagraph,
+      lastParagraph: lastParagraph,
+      radius: radius);
+}
+
+class _GotoDialogState extends State<GotoDialog> {
+  final int firstPage;
+  final int lastPage;
+  final int firstParagraph;
+  final int lastParagraph;
+  final double radius;
+  TextEditingController controller = TextEditingController();
+  GotoType selectedType = GotoType.page;
+  int selectedTypeIndex;
+  String hintText;
+  bool isValid = false;
+
+  _GotoDialogState(
+      {this.firstPage,
+      this.lastPage,
+      this.firstParagraph,
+      this.lastParagraph,
+      this.radius});
+
+  @override
+  void initState() {
+    super.initState();
+    hintText = 'စာမျက်နှာ ($firstPage-$lastPage)';
+    selectedTypeIndex = 0;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<GotoViewModel>(
-      create: (_) {
-        GotoViewModel vm = GotoViewModel(book);
-        vm.init();
-        return vm;
-      },
-      child: Align(
-        alignment: Alignment.center,
-        child: SingleChildScrollView(
-          child: Dialog(
-            shape: RoundedRectangleBorder(
-                side: BorderSide.none,
-                borderRadius: BorderRadius.circular(_radius)),
-            elevation: 10.0,
-            child: dialogContent(),
-          ),
+    return Align(
+      alignment: Alignment.center,
+      child: SingleChildScrollView(
+        child: Dialog(
+          shape: RoundedRectangleBorder(
+              side: BorderSide.none,
+              borderRadius: BorderRadius.circular(widget.radius)),
+          elevation: 10.0,
+          child: dialogContent(),
         ),
       ),
     );
   }
 
   Widget dialogContent() {
-    return Consumer<GotoViewModel>(builder: (context, vm, child) {
-      return Container(
-        // height: 350,
-        width: 300,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Text(
-                'သို့',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
-              ),
-            ),
-            Divider(),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 16.0, right: 16.0),
-                  child: TextField(
-                    decoration: InputDecoration(
-                        hintText: vm.selected == Goto.page
-                            ? vm.pagehintText
-                            : vm.parahintText),
-                    onChanged: vm.validate,
-                    keyboardType: TextInputType.number,
-                    autofocus: true,
-                  ),
-                ),
-                ListTile(
-                  title: const Text('စာမျက်နှာ'),
-                  leading: Radio(
-                    value: Goto.page,
-                    groupValue: vm.selected,
-                    onChanged: vm.setSelected,
-                  ),
-                ),
-                ListTile(
-                  title: const Text('စာပိုဒ်'),
-                  leading: Radio(
-                    value: Goto.paragraph,
-                    groupValue: vm.selected,
-                    onChanged: vm.setSelected,
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Container(
-                  width: 120,
-                  margin: EdgeInsets.all(8.0),
-                  child: FlatButton(
-                    onPressed: () => Navigator.of(context).pop(),
-                    child: Text(
-                      'မသွားတော့ဘူး',
-                      style: TextStyle(color: Theme.of(context).accentColor),
-                    ),
-                  ),
-                ),
-                Container(
-                  width: 120,
-                  margin: EdgeInsets.all(8.0),
-                  child: FlatButton(
-                    onPressed: vm.isValid
-                        ? () {
-                            onClickOK(context, vm);
-                          }
-                        : null,
-                    child: Text(
-                      'သွားမယ်',),
-                      textColor: Theme.of(context).accentColor,
-                    ),
-                    
-                ),
-              ],
-            )
-          ],
+    return Container(
+      width: 300,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          _buildTitle(),
+          Divider(),
+          _buildInputType(context),
+          _buildInputField(),
+          _buildActions(context)
+        ],
+      ),
+    );
+  }
+
+  Padding _buildTitle() {
+    return Padding(
+      padding: const EdgeInsets.all(4.0),
+      child: Text(
+        'သို့',
+        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
+      ),
+    );
+  }
+
+  ToggleSwitch _buildInputType(BuildContext context) {
+    return ToggleSwitch(
+      labels: ['စာမျက်နှာ', 'စာပိုဒ်'],
+      initialLabelIndex: selectedTypeIndex,
+      onToggle: (index) {
+        setState(() {
+          selectedTypeIndex = index;
+          if (index == 0) {
+            selectedType = GotoType.page;
+            hintText = 'စာမျက်နှာ ($firstPage-$lastPage)';
+          } else {
+            selectedType = GotoType.paragraph;
+            hintText = 'စာပိုဒ် ($firstParagraph-$lastParagraph)';
+          }
+        });
+      },
+      activeBgColor: Theme.of(context).accentColor,
+      minWidth: 100.0,
+    );
+  }
+
+  Padding _buildInputField() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+      child: TextField(
+        controller: controller,
+        decoration: InputDecoration(hintText: hintText),
+        onChanged: _validate,
+        keyboardType: TextInputType.number,
+        autofocus: true,
+      ),
+    );
+  }
+
+  Widget _buildActions(BuildContext context) {
+    return ButtonBar(
+      alignment: MainAxisAlignment.spaceEvenly,
+      buttonTextTheme: ButtonTextTheme.accent,
+      buttonMinWidth: 120.0,
+      children: [
+        FlatButton(
+          child: Text(
+            'မသွားတော့ဘူး',
+          ),
+          onPressed: () => Navigator.of(context).pop(),
         ),
-      );
+        FlatButton(
+            child: Text(
+              'သွားမယ်',
+            ),
+            onPressed: !isValid
+                ? null
+                : () {
+                    final result = GotoDialogResult(
+                        int.parse(controller.text), selectedType);
+                    Navigator.pop(context, result);
+                  }),
+      ],
+    );
+  }
+
+  void _validate(String input) {
+    setState(() {
+      if (input.isEmpty) {
+        isValid = false;
+      } else {
+        final inputNumber = int.parse(input);
+        switch (selectedType) {
+          case GotoType.page:
+            isValid = _isPageNumberValid(inputNumber);
+            break;
+          case GotoType.paragraph:
+            isValid = _isParagraphNumberValid(inputNumber);
+            break;
+        }
+      }
     });
   }
 
-  void onClickOK(BuildContext context, GotoViewModel vm) async {
-    if (vm.selected == Goto.paragraph) {
-      vm.inputValue = await vm.getPageNumber(vm.inputValue);
-    }
-    Navigator.pop(context, vm.inputValue);
+  bool _isPageNumberValid(int pageNumber) {
+    return firstPage <= pageNumber && pageNumber <= lastPage;
+  }
+
+  bool _isParagraphNumberValid(int paragraphNumber) {
+    return firstParagraph <= paragraphNumber &&
+        paragraphNumber <= lastParagraph;
   }
 }
