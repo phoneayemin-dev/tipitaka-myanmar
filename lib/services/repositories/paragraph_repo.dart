@@ -43,7 +43,7 @@ class ParagraphDatabaseRepository implements ParagraphRepository {
     List<Map> maps = await db.query(tableName,
         columns: [columnPageNumber],
         where:
-            '$columnBookId = "$bookID" AND $columnParagraphNumber = $paragraphNumber',
+            '$columnBookId = ? AND $columnParagraphNumber = ?',
         whereArgs: [bookID, paragraphNumber]);
     return maps.first[columnPageNumber];
   }

@@ -66,7 +66,7 @@ class HomePage extends StatelessWidget {
   _showAboutDialog(BuildContext context) {
     showAboutDialog(context: context,
         applicationName: 'ပိဋကတ်သုံးပုံ ပါဠိတော် မြန်မာပြန်',
-        applicationVersion: 'ဗားရှင်း။ ။ ၁',
+        applicationVersion: 'ဗားရှင်း။ ။ ၁.၁.၀',
         children: [
           Text('''
                   ကျမ်းစာများ

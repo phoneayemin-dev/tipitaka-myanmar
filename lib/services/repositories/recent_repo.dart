@@ -1,3 +1,4 @@
+import 'package:sqflite/sql.dart';
 import 'package:tipitaka_myanmar/business_logic/models/recent.dart';
 import 'package:tipitaka_myanmar/services/dao/recent_dao.dart';
 import 'package:tipitaka_myanmar/services/database/database_provider.dart';
@@ -5,7 +6,7 @@ import 'package:tipitaka_myanmar/services/database/database_provider.dart';
 abstract class RecentRepository {
   DatabaseProvider databaseProvider;
 
-  Future<int> insertOrUpdate(Recent recent);
+  Future<int> insertOrReplace(Recent recent);
 
   Future<int> delete(Recent recent);
 
@@ -22,14 +23,20 @@ class RecentDatabaseRepository implements RecentRepository {
   RecentDatabaseRepository(this.databaseProvider);
 
   @override
-  Future<int> insertOrUpdate(Recent recent) async {
+  Future<int> insertOrReplace(Recent recent) async {
     final db = await databaseProvider.database;
-    var result = await db.update(dao.tableName, dao.toMap(recent),
+    // var result = await db.update(dao.tableName, dao.toMap(recent),
+    //     where: '${dao.columnBookId} = ?', whereArgs: [recent.bookID]);
+    // print('update result: $result');
+    // if (result == 0) {
+    //   result = await db.insert(dao.tableName, dao.toMap(recent));
+    // }
+
+    var result = await db.delete(dao.tableName,
         where: '${dao.columnBookId} = ?', whereArgs: [recent.bookID]);
-    print('update result: $result');
-    if (result == 0) {
-      result = await db.insert(dao.tableName, dao.toMap(recent));
-    }
+    result = await db.insert(dao.tableName, dao.toMap(recent),
+        conflictAlgorithm: ConflictAlgorithm.ignore);
+
     return result;
   }
 
@@ -54,6 +61,6 @@ class RecentDatabaseRepository implements RecentRepository {
       FROM ${dao.tableName}
       INNER JOIN book ON book.id = ${dao.tableName}.${dao.columnBookId}
       ''');
-    return dao.fromList(maps);
+    return dao.fromList(maps).reversed.toList();
   }
 }

@@ -48,13 +48,12 @@ class ControlBar extends StatelessWidget {
         lastParagraph: lastParagraph,
       ),
     );
+    if (gotoResult != null) {
     final int pageNumber = gotoResult.type == GotoType.page
         ? gotoResult.number
         : await vm.getPageNumber(gotoResult.number);
     vm.gotoPage(pageNumber.toDouble());
-    // if (pageNumber != null) {
-    //   vm.gotoPage(pageNumber.toDouble());
-    // }
+    }
   }
 
   void _openTocDialog(BuildContext context, ReaderViewModel vm) async {

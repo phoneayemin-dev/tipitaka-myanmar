@@ -10,35 +10,37 @@ class MyPageView extends StatelessWidget {
   Widget build(BuildContext context) {
     print('building pageview');
     final vm = Provider.of<ReaderViewModel>(context);
-    final PageController _pageController = PageController(
-      initialPage: vm.currentPage - 1,
-    );
+    final _pageController = PageController(
+        initialPage: vm.currentPage - 1, viewportFraction: 0.999);
 
     if (vm.pages == null) {
-      return Center(
-        child: CircularProgressIndicator(),
-      );
+      return Container();
     } else {
+      print('page length: ${vm.pages.length}');
       vm.pageController = _pageController;
       return PageView.builder(
+        physics: RangeMaintainingScrollPhysics(),
+        allowImplicitScrolling: true,
+        // preloadPagesCount: 2,
         controller: _pageController,
         itemCount: vm.pages.length,
         itemBuilder: (context, index) {
-          print('building page ${index + 1}');
+          // print('building page ${index + 1}');
           return WebView(
             initialUrl: vm.getPageContent(index).toString(),
             javascriptMode: JavascriptMode.unrestricted,
             gestureRecognizers: Set()
               ..add(Factory<VerticalDragGestureRecognizer>(
                   () => VerticalDragGestureRecognizer())),
-            onWebViewCreated: (controller) => vm.webViewController = controller,
+            onWebViewCreated: (controller) =>
+                vm.webViewControllers[index] = controller,
             onPageFinished: (_) {
-              vm.webViewController.evaluateJavascript('''
-                  var goto = document.getElementById("goto_001");
-                  if(goto != null){
-                    goto.scrollIntoView();
-                  }
-                  ''');
+              vm.webViewControllers[index].evaluateJavascript('''
+                      var goto = document.getElementById("goto_001");
+                      if(goto != null){
+                        goto.scrollIntoView();
+                      }
+                      ''');
             },
           );
         },

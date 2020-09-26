@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 import 'package:provider/provider.dart';
@@ -37,11 +38,13 @@ class SearchPage extends StatelessWidget {
                           )),
                 SearchBar(onSubmitted: (searchWord) async {
                   if (searchWord.trim().isNotEmpty) {
-                    final ProgressDialog pr = ProgressDialog(context);
-                    pr.style(message: 'ရှာနေဆဲ');
-                    await pr.show();
+                    final progressDialog = ProgressDialog(context);
+                    progressDialog.style(
+                      message: 'ရှာနေဆဲ ...',
+                    );
+                    await progressDialog.show();
                     await vm.doSearch(searchWord.trim());
-                    await pr.hide();
+                    await progressDialog.hide();
                     final info = vm.results.isEmpty
                         ? 'ရှာမတွေ့ပါ'
                         : 'တွေ့ရှိမှု - ${MmNumber.get(vm.results.length)} ကြိမ်';

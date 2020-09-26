@@ -36,17 +36,16 @@ class SimpleInputDialog extends StatelessWidget {
   }
 
   Widget _buildTextField(String hintText) {
-    return Container(height: 56.0,
-    alignment: Alignment(0.0, 0.0),
-      child: TextField(
+    return TextField(
         controller: _controller,
         decoration: InputDecoration(
           hintText: hintText,
           hintStyle: TextStyle(fontSize: 13),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(16.0), gapPadding: 0.0),
         ),
+        maxLines: null,
+        maxLength: 50,
         // autofocus: true,
-      ),
     );
   }
 
@@ -56,14 +55,14 @@ class SimpleInputDialog extends StatelessWidget {
       children: [
         Expanded(
             child: FlatButton(
-          child: Text(cancelLabel,
-              style: TextStyle(color: Theme.of(context).accentColor)),
+          child: Text(cancelLabel),
+              textTheme: ButtonTextTheme.accent,
           onPressed: () => Navigator.of(context).pop(),
         )),
         Expanded(
             child: FlatButton(
-          child: Text(okLabel,
-              style: TextStyle(color: Theme.of(context).accentColor)),
+          child: Text(okLabel),
+          textTheme: ButtonTextTheme.accent,
           onPressed: () => Navigator.of(context).pop(_controller.text),
         )),
       ],

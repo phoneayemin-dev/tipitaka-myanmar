@@ -32,15 +32,15 @@ class _HomeState extends State<Home> {
           currentIndex: _currentIndex,
           items: [
             BottomNavigationBarItem(
-              title: Text('Home'),
+              label: 'Home',
               icon: Icon(Icons.home),
             ),
             BottomNavigationBarItem(
-                title: Text('Bookmark'), icon: Icon(Icons.bookmark)),
+                label: 'Bookmark', icon: Icon(Icons.bookmark)),
             BottomNavigationBarItem(
-                title: Text('Recent'), icon: Icon(Icons.history)),
+                label: 'Recent', icon: Icon(Icons.history)),
             BottomNavigationBarItem(
-                title: Text('Search'), icon: Icon(Icons.search)),
+                label: 'Search', icon: Icon(Icons.search)),
           ],
           onTap: _changePage,
         ));

@@ -16,7 +16,7 @@ class SearchProvider {
       List<String> pages = bookContent.split('--');
       // pages.removeAt(0);
       pages.removeLast();
-      print('number of page: ${pages.length}');
+      // print('number of page: ${pages.length}');
       for (int j = 0; j < pages.length; j++) {
         int start = 0;
         while (true) {

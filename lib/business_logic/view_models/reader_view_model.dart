@@ -31,6 +31,7 @@ class ReaderViewModel with ChangeNotifier {
   bool loadFinished = false;
   PageController pageController;
   WebViewController webViewController;
+  List<WebViewController> webViewControllers;
   final BuildContext context;
 
   ReaderViewModel({
@@ -41,7 +42,7 @@ class ReaderViewModel with ChangeNotifier {
   });
 
   Future<void> loadAllData() async {
-    print('loading all required data');
+    // print('loading all required data');
     final fontName = 'NotoSansMyanmar-Regular.otf';
     _cssFont = await loadCssFont(fontName: fontName);
     _fontSize = await loadFontSize();
@@ -50,9 +51,10 @@ class ReaderViewModel with ChangeNotifier {
     book.firstPage = 1;
     book.lastPage = pages.length;
     numberOfPage = pages.length;
+    webViewControllers = List<WebViewController>(pages.length);
     notifyListeners();
-    print('number of pages: ${pages.length}');
-    print('loading finished');
+    // print('number of pages: ${pages.length}');
+    // print('loading finished');
   }
 
   Future<ByteData> loadFont(String fontName) async {
@@ -161,13 +163,17 @@ class ReaderViewModel with ChangeNotifier {
 
   void increaseFontSize() {
     _fontSize += 5;
-    webViewController.loadUrl(getPageContent(currentPage - 1).toString());
+    webViewControllers[currentPage - 1]
+        .loadUrl(getPageContent(currentPage - 1).toString());
+    notifyListeners();
     SharedPrefProvider.setInt(key: 'font-size', value: _fontSize);
   }
 
   void decreaseFontSize() {
     _fontSize -= 5;
-    webViewController.loadUrl(getPageContent(currentPage - 1).toString());
+    webViewControllers[currentPage - 1]
+        .loadUrl(getPageContent(currentPage - 1).toString());
+    notifyListeners();
     SharedPrefProvider.setInt(key: 'font-size', value: _fontSize);
   }
 
@@ -186,6 +192,6 @@ class ReaderViewModel with ChangeNotifier {
     final DatabaseProvider databaseProvider = DatabaseProvider();
     final RecentRepository recentRepository =
         RecentDatabaseRepository(databaseProvider);
-    recentRepository.insertOrUpdate(Recent(book.id, currentPage));
+    recentRepository.insertOrReplace(Recent(book.id, currentPage));
   }
 }

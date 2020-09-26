@@ -28,7 +28,6 @@ class App extends StatelessWidget {
   RouteFactory _routes() {
     return (settings) {
       final Map<String, dynamic> arguments = settings.arguments;
-      print('page number: ${arguments["currentPage"]}');
       Widget screen;
       switch (settings.name) {
         case HomeRoute:
