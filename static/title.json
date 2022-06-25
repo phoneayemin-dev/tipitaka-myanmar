@@ -1,0 +1,68 @@
+[
+    { "id": 1,  "name": "vinaya", "text": "ဝိနည်းပိဋက", 
+        "parliTitles": [
+            { "id": 1, "name": "vinaya_01", "text": "ပါရာဇိကဏ်ပါဠိတော်", "file": "01-vinaya-01" },
+            { "id": 2, "name": "vinaya_02", "text": "ပါစိတ်ပါဠိတော်", "file": "01-vinaya-02" },
+            { "id": 3, "name": "vinaya_03", "text": "မဟာဝဂ်ပါဠိတော်", "file": "01-vinaya-03" }
+        ]
+    },
+
+    { "id": 2,  "name": "digha", "text": "ဒီဃနိကာယ်",
+        "parliTitles": [
+            { "id": 1, "name": "digha_01", "text": "သီလက္ခန်ပါဠိတော်", "file": "02-digha-01" },
+            { "id": 2, "name": "digha_02", "text": "မဟာဝဂ်ပါဠိတော်", "file": "02-digha-02" },
+            { "id": 3, "name": "digha_03", "text": "ပါထိကဝဂ်ပါဠိတော်", "file": "02-digha-03" }
+        ]
+    
+    },
+
+    { "id": 3,  "name": "majjhima", "text": "မဇ္ဈိမနိကာယ်",
+        "parliTitles": [
+            { "id": 1, "name": "majjhima_01", "text": "မူလပဏ္ဏာသပါဠိတော်", "file": "03-majjhima-01" },
+            { "id": 2, "name": "majjhima_02", "text": "မဇ္ဈိမပဏ္ဏာသပါဠိတော်", "file": "03-majjhima-02" },
+            { "id": 3, "name": "majjhima_03", "text": "ဥပရိပဏ္ဏာသပါဠိတော်", "file": "03-majjhima-03" }
+        ]
+    },
+
+    { "id": 4,  "name": "sanyutta", "text": "သံယုတ္တနိကာယ်",
+        "parliTitles": [
+            { "id": 1, "name": "sanyutta_01", "text": "သဂါထာဝဂ္ဂသံယုတ်ပါဠိတော်", "file": "04-sanyutta-01" },
+            { "id": 2, "name": "sanyutta_02", "text": "နိဒါနဝဂ္ဂသံယုတ်ပါဠိတော်", "file": "04-sanyutta-02" },
+            { "id": 3, "name": "sanyutta_03", "text": "ခန္ဓဝဂ္ဂသံယုတ်ပါဠိတော်", "file": "04-sanyutta-03" },
+            { "id": 4, "name": "sanyutta_04", "text": "သဠာယတနဝဂ္ဂသံယုတ်ပါဠိတော်", "file": "04-sanyutta-04" },
+            { "id": 5, "name": "sanyutta_05", "text": "မဟာဝဂ္ဂသံယုတ်ပါဠိတော်", "file": "04-sanyutta-05" }
+        ]
+    },
+
+    { "id": 5,  "name": "anguttara", "text": "အင်္ဂုတ္တုရနိကာယ်",
+        "parliTitles": []
+    },
+
+    { "id": 6,  "name": "khuddaka", "text": "ခုဒ္ဒကနိကာယ်",
+        "parliTitles": [
+            { "id": 1, "name": "khuddaka_01", "text": "ခုဒ္ဒကပါဌပါဠိတော်", "file": "06-khuddaka-01" },
+            { "id": 2, "name": "khuddaka_02", "text": "ဓမ္မပဒပါဠိတော်", "file": "06-khuddaka-02" },
+            { "id": 3, "name": "khuddaka_03", "text": "ဥဒါန်းပါဠိတော်", "file": "06-khuddaka-03" },
+            { "id": 4, "name": "khuddaka_04", "text": "ဣတိဝုတ်ပါဠိတော်", "file": "06-khuddaka-04" },
+            { "id": 5, "name": "khuddaka_05", "text": "သုတ္တနိပါတ်ပါဠိတော်", "file": "06-khuddaka-05" },
+            { "id": 6, "name": "khuddaka_06", "text": "ဝိမာနဝတ္ထုပါဠိတော်", "file": "06-khuddaka-06" },
+            { "id": 7, "name": "khuddaka_07", "text": "ပေတဝတ္ထုပါဠိတော်", "file": "06-khuddaka-07" },
+            { "id": 8, "name": "khuddaka_08", "text": "ထေရာပဒါန်ပါဠိတော်", "file": "06-khuddaka-08" },
+            { "id": 9, "name": "khuddaka_09", "text": "ထေရီအပဒါန်ပါဠိတော်", "file": "06-khuddaka-09" },
+            { "id": 10, "name": "khuddaka_10", "text": "ဗုဒ္ဓဝံသပါဠိတော်", "file": "06-khuddaka-10" },
+            { "id": 11, "name": "khuddaka_11", "text": "စရိယာပိဋကပါဠိတော်", "file": "06-khuddaka-11" },
+            { "id": 12, "name": "khuddaka_12", "text": "ပဋိသမ္ဘိဒါမဂ်ပါဠိတော်", "file": "06-khuddaka-12" },
+            { "id": 13, "name": "khuddaka_13", "text": "မိလိန္ဒပဥှာပါဠိတော်", "file": "06-khuddaka-13" }
+        ]
+    },
+
+    { "id": 7,  "name": "abhidhamma", "text": "အဘိဓမ္မပိဋက",
+        "parliTitles": [
+            { "id": 1, "name": "abhidhamma_01", "text": "ဓမ္မသင်္ဂဏီပါဠိတော်", "file": "07-abhidhamma-01" },
+            { "id": 2, "name": "abhidhamma_02", "text": "ဝိဘင်္ဂပါဠိတော်", "file": "07-abhidhamma-02" },
+            { "id": 3, "name": "abhidhamma_03", "text": "ပုဂ္ဂလပညတ်ပါဠိတော်", "file": "07-abhidhamma-03" },
+            { "id": 4, "name": "abhidhamma_04", "text": "ကထာဝတ္ထုပါဠိတော်", "file": "07-abhidhamma-05" }
+        ]
+    }
+]
+  

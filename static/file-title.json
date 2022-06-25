@@ -1,0 +1,101 @@
+[
+    { "id": 1,  "name": "01_vinaya_01", "text": "ပါရာဇိကဏ်ပါဠိတော်", 
+        "category": { "name" :"vinaya", "text": "ဝိနည်းပိဋက"}, 
+        "file": { "name": "01-vinaya-01"} 
+    },
+
+    { "id": 2,  "name": "01_vinaya_02", "text": "ပါစိတ်ပါဠိတော်", 
+        "category": { "name" :"vinaya", "text": "ဝိနည်းပိဋက"},
+        "file": { "name": "01-vinaya-02"} 
+    },
+    { "id": 3,  "name": "01_vinaya_03", "text": "မဟာဝဂ်ပါဠိတော်", 
+        "category": { "name" :"vinaya", "text": "ဝိနည်းပိဋက"},
+        "file": { "name": "01-vinaya-03"} 
+    },
+
+    { "id": 5,  "name": "01_vinaya_04", "text": "စူဠဝဂ်ပါဠိတော်", 
+        "category": { "name" :"vinaya", "text": "ဝိနည်းပိဋက"},
+        "file": { "name": "01-vinaya-04"} 
+    },
+
+    { "id": 6,  "name": "01_vinaya_05", "text": "ပရိဝါပါဠိတော်", 
+        "category": { "name" :"vinaya", "text": "ဝိနည်းပိဋက"},
+        "file": { "name": "01-vinaya-05"}  
+    },
+
+
+
+    { "id": 7,  "name": "02_digha_01", "text": "သီလက္ခန်ပါဠိတော်", 
+        "category": { "name" :"digha", "text": "ဒီဃနိကာယ်"},
+        "file": { "name": "02-digha-01"}  
+    },
+
+    { "id": 8,  "name": "02_digha_02", "text": "မဟာဝဂ်ပါဠိတော်", 
+        "category": { "name" :"digha", "text": "ဒီဃနိကာယ်"},
+        "file": { "name": "02-digha-02"}  
+    },
+
+    { "id": 9,  "name": "02_digha_03", "text": "ပါထိကဝဂ်ပါဠိတော်", 
+        "category": { "name" :"digha", "text": "ဒီဃနိကာယ်"},
+        "file": { "name": "02-digha-03"}  
+    },
+
+
+
+
+    { "id": 10,  "name": "03_majjhima_01", "text": "မူလပဏ္ဏာသပါဠိတော်", 
+        "category": { "name" :"majjhima", "text": "မဇ္ဈိမနိကာယ်"},
+        "file": { "name": "03-majjhima-01"}  
+    },
+
+    { "id": 11,  "name": "03_majjhima_02", "text": "မဇ္ဈိမပဏ္ဏာသပါဠိတော်", 
+        "category": { "name" :"majjhima", "text": "မဇ္ဈိမနိကာယ်"},
+        "file": { "name": "03-majjhima-02"}  
+    },
+
+    { "id": 12,  "name": "03_majjhima_03", "text": "ဥပရိပဏ္ဏာသပါဠိတော်", 
+        "category": { "name" :"majjhima", "text": "မဇ္ဈိမနိကာယ်"},
+        "file": { "name": "03-majjhima-03"}  
+    },
+
+
+
+    { "id": 13,  "name": "04_sanyutta_01", "text": "သဂါထာဝဂ္ဂသံယုတ်ပါဠိတော်", 
+        "category": { "name" :"sanyutta", "text": "သံယုတ္တနိကာယ်"},
+        "file": { "name": "04-sanyutta-01"}  
+    },
+
+    { "id": 14,  "name": "04_sanyutta_02", "text": "နိဒါနဝဂ္ဂသံယုတ်ပါဠိတော်", 
+        "category": { "name" :"sanyutta", "text": "သံယုတ္တနိကာယ်"},
+        "file": { "name": "04-sanyutta-02"}  
+    },
+
+    { "id": 15,  "name": "04_sanyutta_03", "text": "ခန္ဓဝဂ္ဂသံယုတ်ပါဠိတော်", 
+        "category": { "name" :"sanyutta", "text": "သံယုတ္တနိကာယ်"},
+        "file": { "name": "04-sanyutta-03"}  
+    },
+
+    { "id": 15,  "name": "04_sanyutta_04", "text": "သဠာယတနဝဂ္ဂသံယုတ်ပါဠိတော်", 
+        "category": { "name" :"sanyutta", "text": "သံယုတ္တနိကာယ်"},
+        "file": { "name": "04-sanyutta-04"}  
+    },
+
+    { "id": 15,  "name": "04_sanyutta_05", "text": "မဟာဝဂ္ဂသံယုတ်ပါဠိတော်", 
+        "category": { "name" :"sanyutta", "text": "သံယုတ္တနိကာယ်"},
+        "file": { "name": "04-sanyutta-05"}  
+    },
+
+
+    { "id": 16,  "name": "05_anguttara_01", "text": "အင်္ဂုတ္တိုရ်ပါဠိတော်", 
+        "category": { "name" :"digha", "text": "ဒီဃနိကာယ်"},
+        "file": { "name": "05-anguttara-01"}  
+    },
+
+    { "id": 17,  "name": "05_anguttara_01", "text": "အင်္ဂုတ္တိုရ်ပါဠိတော်", 
+        "category": { "name" :"digha", "text": "ဒီဃနိကာယ်"},
+        "file": { "name": "05-anguttara-01"}  
+    },
+    
+    
+]
+  
