@@ -15,29 +15,32 @@
         
         
         <v-divider></v-divider>
-        <v-row justify="center">
+        <v-row justify="center" 
+            v-for="(title, key, index) in listTitles" 
+            :index="index" 
+            :key="key"
+        >
+            <v-subheader> {{ title.text }} </v-subheader>
+                
             <v-expansion-panels hover inset >
-
                 <v-expansion-panel
-                    v-for="(title, key, index) in titles" 
-                    :index="index" 
-                    :key="key"
+                    v-for="(item, ke, indx) in title.items" 
+                    :index="indx" 
+                    :key="ke"
                 >
                     <v-expansion-panel-header ripple>
-                        {{ title.text }}
+                        {{ item.text }}
                     </v-expansion-panel-header>
-                    <v-expansion-panel-content v-if="Object.keys(title.parliTitles)">
-                        <v-list >
+                    <v-expansion-panel-content v-if="'sub_items' in item">
+                        <v-list>
                             <v-list-item-group >
                                 <v-list-item
-                                    v-for="(parLiTitle, k, i) in title.parliTitles" :index="i" :key="k"
+                                    v-for="(parLiTitle, k, i) in item.sub_items" :index="i" :key="k"
                                     link
-                                    :to="generateLink(parLiTitle)"
                                     color="#FFAB00"
                                     @click="getParLiTitle(parLiTitle.text)"
                                     ripple
                                 >
-                                        
                                     <v-list-item-content>
                                         {{ parLiTitle.text }}
                                     </v-list-item-content>
@@ -47,20 +50,23 @@
                     </v-expansion-panel-content>
                 </v-expansion-panel>
             </v-expansion-panels> 
-        </v-row>            
+        </v-row> 
     </v-navigation-drawer>
 </template>
 
 <script>
 export default{
-    props: ['drawer', 'titles'],
+    props: [
+        'drawer', 
+        'listTitles',
+    ],
     data() {
         return {
         }
     },
     methods: {
         generateLink(parLiTitle){
-            return `/books/${parLiTitle.file}`
+            return `/books/${parLiTitle.file.name}`
         },
 
         getParLiTitle(title){

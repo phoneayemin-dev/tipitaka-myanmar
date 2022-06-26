@@ -1,0 +1,178 @@
+[
+
+    { "id": 1, "name": "vinaya", "text": "ဝိနည်းပိဋက",
+        "items": [
+            { "id": 1, "name": "parajika", "text": "ပါရာဇိကံ",
+                "file": { "name": "01-vinaya-01"}
+            },
+        
+            { "id": 2, "name": "pacittiya", "text": "ပါစိတ်", 
+                "file": { "name": "01-vinaya-02"}
+            },
+        
+            { "id": 3, "name": "mahavagga", "text": "မဟာဝါ", 
+                "file": { "name": "01-vinaya-03"}
+            },
+            { "id": 4, "name": "culavagga", "text": "စူဠဝါ",
+                "file": { "name": "01-vinaya-04"}
+            },
+            { "id": 5, "name": "parivara", "text": "ပရိဝါ", 
+                "file": { "name": "01-vinaya-05"}
+            }
+        ] 
+    },
+
+
+    { "id": 2, "name": "sutta", "text": "သုတ္တပိဋက",
+        "items":[
+            { "id": 6, "name": "dighanikaya", "text": "ဒီဃနိကာယ်", 
+                "sub_items": [
+                    { "id": 1, "name": "silakkhandhavagga", "text": "သီလက္ခန်", 
+                        "file": { "name": "01-vinaya-05"}
+                    },
+                    { "id": 2, "name": "mahavagg", "text": "မဟာဝါ", 
+                        "file": { "name": "01-vinaya-05"}
+                    },
+                    { "id": 3, "name": "pathikavagga", "text": "ပါထေယျ", 
+                        "file": { "name": "01-vinaya-05"}
+                    }
+                    
+                ]
+            },
+            { "id": 7, "name": "majjahimanikaya", "text": "မဇ္ဈိမနိကာယ်", 
+                "sub_items": [
+                    { "id": 1, "name": "mula_pannasa", "text": "မူလပဏ္ဏာသ", 
+                        "file": { "name": "01-vinaya-05"}
+                    },
+                    { "id": 2, "name": "majjima_pannasa", "text": "မဇ္ဈိမပဏ္ဏာသ", 
+                        "file": { "name": "01-vinaya-05"}
+                    },
+                    { "id": 3, "name": "upari_pannasa", "text": "ဥပရိပဏ္ဏာသ", 
+                        "file": { "name": "01-vinaya-05"}
+                    }
+                    
+                ]
+            },
+            { "id": 8, "name": "samyuttanikaya", "text": "သံယုတ္တနိကာယ်",
+                "sub_items": [
+                    { "id": 1, "name": "sagatha_sam", "text": "သဂါထာဝဂ္ဂသံယုတ်", 
+                        "file": { "name": "01-vinaya-05"}
+                    },
+                    { "id": 2, "name": "nidana_sam", "text": " နိဒါနဝဂ္ဂသံယုတ်", 
+                        "file": { "name": "01-vinaya-05"}
+                    },
+                    { "id": 3, "name": "khandha_sam", "text": "ခန္ဓဝဂ္ဂသံယုတ်", 
+                        "file": { "name": "01-vinaya-05"}
+                    },
+                    { "id": 4, "name": "salayatana_sam", "text": "သဠာယတနဝဂ္ဂသံယုတ်", 
+                        "file": { "name": "01-vinaya-05"}
+                    },
+                    { "id": 5, "name": "mahavagga_sam", "text": " မဟာဝဂ္ဂသံယုတ်", 
+                        "file": { "name": "01-vinaya-05"}
+                    }
+                    
+                ]
+            },
+            { "id": 9, "name": "anguttaranikaya", "text": "အင်္ဂုတ္တရနိကာယ်",
+                "sub_items": [
+                    { "id": 1, "name": "anguttara_01", "text": "ဧကကနိပါတ်", 
+                        "file": { "name": "01-vinaya-05"}
+                    },
+                    { "id": 2, "name": "anguttara_02", "text": "ဒုကနိပါတ်", 
+                        "file": { "name": "01-vinaya-05"}
+                    },
+                    { "id": 3, "name": "anguttara_03", "text": "တိကနိပါတ်", 
+                        "file": { "name": "01-vinaya-05"}
+                    },
+                    { "id": 4, "name": "anguttara_04", "text": "စတုက္ကနိပါတ်", 
+                        "file": { "name": "01-vinaya-05"}
+                    },
+                    { "id": 5, "name": "anguttara_05", "text": "ပဉ္စကနိပါတ်", 
+                        "file": { "name": "01-vinaya-05"}
+                    },
+                    { "id": 6, "name": "anguttara_06", "text": "ဆက္ကနိပါတ်", 
+                        "file": { "name": "01-vinaya-05"}
+                    },
+                    { "id": 7, "name": "anguttara_07", "text": "သတ္တကနိပါတ်", 
+                        "file": { "name": "01-vinaya-05"}
+                    },
+                    { "id": 8, "name": "anguttara_08", "text": "အဌကနိပါတ်", 
+                        "file": { "name": "01-vinaya-05"}
+                    },
+                    { "id": 9, "name": "anguttara_09", "text": "နဝကနိပါတ်", 
+                        "file": { "name": "01-vinaya-05"}
+                    },
+                    { "id": 10, "name": "anguttara_10", "text": "ဒသကနိပါတ်", 
+                        "file": { "name": "01-vinaya-05"}
+                    },
+                    { "id": 11, "name": "anguttara_11", "text": "ဧကာဒသကနိပါတ်", 
+                        "file": { "name": "01-vinaya-05"}
+                    }
+                ]
+            },
+            { "id": 10, "name": "khuddakanikaya", "text": "ခုဒ္ဒကနိကာယ်", 
+                "sub_items": [
+                    { "id": 1, "name": "khuddakapatha", "text": "ခုဒ္ဒကပါဌ", 
+                        "file": { "name": "01-vinaya-05"}
+                    },
+                    { "id": 2, "name": "dhammapada", "text": "ဓမ္မပဒ", 
+                        "file": { "name": "01-vinaya-05"}
+                    },
+                    { "id": 3, "name": "udana", "text": "ဥဒါန်း", 
+                        "file": { "name": "01-vinaya-05"}
+                    },
+                    { "id": 4, "name": "itivuttaka", "text": "ဣတိဝုတ် ", 
+                        "file": { "name": "01-vinaya-05"}
+                    },
+                    { "id": 5, "name": "suttanipata", "text": "သုတ္တနိပါတ်", 
+                        "file": { "name": "01-vinaya-05"}
+                    },
+                    { "id": 6, "name": "vimanavatthu", "text": "ဝိမာနဝတ္ထု", 
+                        "file": { "name": "01-vinaya-05"}
+                    },
+                    { "id": 7, "name": "petavatthu", "text": "ပေတဝတ္ထု", 
+                        "file": { "name": "01-vinaya-05"}
+                    },
+                    { "id": 8, "name": "patisambhidamagga", "text": "ပဋိသမ္ဘိဒါမဂ်", 
+                        "file": { "name": "01-vinaya-05"}
+                    },
+                    { "id": 9, "name": "therapadana", "text": "ထေရအပါဒါန်", 
+                        "file": { "name": "01-vinaya-05"}
+                    },
+                    { "id": 10, "name": "theripadana", "text": "ထေရီအပါဒါန် ", 
+                        "file": { "name": "01-vinaya-05"}
+                    },
+                    { "id": 11, "name": "buddhavamsa", "text": "ဗုဒ္ဓဝင်", 
+                        "file": { "name": "01-vinaya-05"}
+                    },
+                    { "id": 12, "name": "cariyapitaka", "text": "စရိယာပိဋက", 
+                        "file": { "name": "01-vinaya-05"}
+                    },
+                    { "id": 13, "name": "milindapanha", "text": "မိလိန္ဒပဥှာ", 
+                        "file": { "name": "01-vinaya-05"}
+                    }
+                ]
+            }
+        ]
+    },
+
+    { "id": 3, "name": "abhidhamma", "text": "အဘိဓမ္မပိဋက", 
+        "items":[
+            { "id": 11, "name": "dhammasangani", "text": "ဓမ္မသင်္ဂဏီ", 
+                "file": { "name": "01-sutta-01"}
+            },
+            
+            { "id": 12, "name": "vibhanga", "text": "ဝိဘင်း", 
+                "file": { "name": "01-sutta-01"}
+            },
+            { "id": 13, "name": "puggalapannatti", "text": "ပုဂ္ဂလပညတ်", 
+                "file": { "name": "01-sutta-01"}
+            },
+        
+            { "id": 14, "name": "kathavatthu", "text": "ကထာဝတ္ထု", 
+                "file": { "name": "01-sutta-01"}
+            }
+        ]
+    }
+]
+  

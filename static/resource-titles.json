@@ -1,0 +1,70 @@
+[
+
+
+    { "id": 1, "name": "parajika", "text": "ပါရာဇိကံ",
+        "category": { "name": "vinaya", "text": "ဝိနည်းပိဋက" }, 
+        "file": { "name": "01-vinaya-01"}
+    },
+
+    { "id": 2, "name": "pacittiya", "text": "ပါစိတ်", 
+        "category": { "name": "vinaya", "text": "ဝိနည်းပိဋက" }, 
+        "file": { "name": "01-vinaya-01"}
+    },
+
+    { "id": 3, "name": "mahavagga", "text": "မဟာဝါ", 
+        "category": { "name": "vinaya", "text": "ဝိနည်းပိဋက" }, 
+        "file": { "name": "01-vinaya-01"}
+    },
+    { "id": 4, "name": "culavagga", "text": "စူဠဝါ",
+        "category": { "name": "vinaya", "text": "ဝိနည်းပိဋက" }, 
+        "file": { "name": "01-vinaya-01"}
+    },
+    { "id": 5, "name": "parivara", "text": "ပရိဝါ", 
+        "category": { "name": "vinaya", "text": "ဝိနည်းပိဋက" }, 
+        "file": { "name": "01-vinaya-01"}
+    },
+
+
+
+    { "id": 6, "name": "dighanikaya", "text": "ဒီဃနိကာယ်", 
+        "category": { "name": "sutta", "text": "သုတ္တပိဋက" }, 
+        "file": { "name": "01-sutta-01"}
+    },
+    { "id": 7, "name": "majjahimanikaya", "text": "မဇ္ဈိမနိကာယ်", 
+        "category": { "name": "sutta", "text": "သုတ္တပိဋက" }, 
+        "file": { "name": "01-sutta-01"}
+    },
+    { "id": 8, "name": "samyuttanikaya", "text": "သံယုတ္တနိကာယ်",
+        "category": { "name": "sutta", "text": "သုတ္တပိဋက" }, 
+        "file": { "name": "01-sutta-01"}
+    },
+    { "id": 9, "name": "anguttaranikaya", "text": "အင်္ဂုတ္တရနိကာယ်",
+        "category": { "name": "sutta", "text": "    " }, 
+        "file": { "name": "01-sutta-01"}
+    },
+    { "id": 10, "name": "khuddakanikaya", "text": "ခုဒ္ဒကနိကာယ်", 
+        "category": { "name": "sutta", "text": "သုတ္တပိဋက" }, 
+        "file": { "name": "01-sutta-01"}
+    },
+    
+
+    { "id": 11, "name": "dhammasangani", "text": "ဓမ္မသင်္ဂဏီ", 
+        "category": { "name": "abhidhamma", "text": "အဘိဓမ္မပိဋက" }, 
+        "file": { "name": "01-sutta-01"}
+    },
+    
+    { "id": 12, "name": "vibhanga", "text": "ဝိဘင်း", 
+        "category": { "name": "abhidhamma", "text": "အဘိဓမ္မပိဋက" }, 
+        "file": { "name": "01-sutta-01"}
+    },
+    { "id": 13, "name": "puggalapannatti", "text": "ပုဂ္ဂလပညတ်", 
+        "category": { "name": "abhidhamma", "text": "အဘိဓမ္မပိဋက" }, 
+        "file": { "name": "01-sutta-01"}
+    },
+
+    { "id": 14, "name": "kathavatthu", "text": "ကထာဝတ္ထု", 
+        "category": { "name": "abhidhamma", "text": "အဘိဓမ္မပိဋက" }, 
+        "file": { "name": "01-sutta-01"}
+    }
+]
+  

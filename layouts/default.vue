@@ -1,7 +1,13 @@
 <template>
     <v-app id="app">
 		
-		<NavigationDrawer :titles="titles" :drawer="showDrawer" @parLiTitle="getParLiTitle"/>
+		<NavigationDrawer 
+			:drawer="showDrawer" 
+			@parLiTitle="getParLiTitle"
+
+			:listTitles="listTitles" 
+		/>
+
 		<v-app-bar app dense flat color="#FFC400">
 			<v-app-bar-nav-icon @click="toggleDrawer()"></v-app-bar-nav-icon>
 			<v-toolbar-title>{{ parLiTitle }}</v-toolbar-title>
@@ -17,18 +23,17 @@
 
 <script>
 import NavigationDrawer from '@/components/NavigationDrawer.vue'
-import titles from '@/static/title.json' 
+import titles from '@/static/categorize-titles.json' 
 
 export default {
 	components: {
 		NavigationDrawer
 	},
-
 	data(){
 		return {
 			showDrawer: false,
 			parLiTitle: "Tipitaka Myanmar",
-			titles : titles,
+			listTitles: titles,
 		}
 	},
 
@@ -38,8 +43,7 @@ export default {
 		},
 		getParLiTitle(value) {
 			this.parLiTitle = value
-		}
-
+		},
 		
 	},
 
