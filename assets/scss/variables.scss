@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar:wght@300;400;500;700&family=Noto+Serif+Myanmar&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar:wght@300;400;500;700&family=Noto+Serif+Myanmar&family=Padauk&display=swap');
+
+//Web kit scrollbar
+$web-kit-scrollbar-width: 5px;
+$web-kit-scrollbar-background-color: #fffffe49;
+
+//web kit scrollbar thumb
+$web-kit-scrollbar-thum-background: linear-gradient(to bottom,rgb(0,0,204),rgb(255,254,0),rgb(255,0,0),rgb(255,255,254), rgb(255,127,0));
+$web-kit-scrollbar-thum-height: 25px;
+$web-kit-scrollbar-thum-border-radius: 10px;
+
+//scroll bar 
+::-webkit-scrollbar {
+	width: $web-kit-scrollbar-width;
+	background-color: $web-kit-scrollbar-background-color;
+	/* overflow: scroll; */
+}
+
+::-webkit-scrollbar-thumb{
+	background: $web-kit-scrollbar-thum-background;
+	height: $web-kit-scrollbar-thum-height;
+	border-radius: $web-kit-scrollbar-thum-border-radius;
+}
+
+
+$font-family: 'Noto Sans Myanmar', serif;
+$body-font-family: 'Padauk', sans-serif;
+$heading-font-family: 'Noto Sans Myanmar', serif;
+
+//expansion panel	
+$expansion-panel-border-radius: 12px !default;
+$expansion-panel-header-font-size: 1.2rem !default;
+$expansion-panel-header-min-height: 64px !default;
+$expansion-panel-active-header-min-height: 72px !default;
+$expansion-panel-active-margin: 16px !default;
+$expansion-panel-content-padding: 0 16px 16px !default;
+
+
+//V list
+$list-padding: 5px 0 !default;
+$list-item-title-font-size: 1rem !default;
+// $list-item-content-padding: 5px 0 !default;
+
+

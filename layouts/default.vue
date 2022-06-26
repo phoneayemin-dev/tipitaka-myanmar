@@ -1,10 +1,10 @@
 <template>
     <v-app id="app">
 		
-		<NavigationDrawer :titles="titles" :drawer="showDrawer"/>
-		<v-app-bar app>
+		<NavigationDrawer :titles="titles" :drawer="showDrawer" @parLiTitle="getParLiTitle"/>
+		<v-app-bar app dense flat color="#FFC400">
 			<v-app-bar-nav-icon @click="toggleDrawer()"></v-app-bar-nav-icon>
-			<v-toolbar-title>{{ title }}</v-toolbar-title>
+			<v-toolbar-title>{{ parLiTitle }}</v-toolbar-title>
 		</v-app-bar>
 
 		<v-main>
@@ -27,7 +27,7 @@ export default {
 	data(){
 		return {
 			showDrawer: false,
-			title: "Tipitaka Myanmar",
+			parLiTitle: "Tipitaka Myanmar",
 			titles : titles,
 		}
 	},
@@ -35,6 +35,9 @@ export default {
 	methods: {
 		toggleDrawer(){
 			this.showDrawer = !this.showDrawer
+		},
+		getParLiTitle(value) {
+			this.parLiTitle = value
 		}
 
 		
@@ -48,3 +51,19 @@ export default {
 	// },
 }
 </script>
+<!-- <style lang="scss">
+@import '~/assets/variables.scss';
+
+::-webkit-scrollbar {
+	width: $web-kit-scrollbar-width;
+	background-color: $web-kit-scrollbar-background-color;
+	/* overflow: scroll; */
+}
+
+::-webkit-scrollbar-thumb{
+	background: $web-kit-scrollbar-thum-background;
+	height: $web-kit-scrollbar-thum-height;
+	border-radius: $web-kit-scrollbar-thum-border-radius;
+}
+
+</style> -->

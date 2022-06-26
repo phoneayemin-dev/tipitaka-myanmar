@@ -2,36 +2,52 @@
     <v-navigation-drawer
 		v-model="drawer"
 		app
-	>
+	>   
+        <v-list flat min-height="120px" color="#FFAB00">
+            <v-list-item three-line>
+                <v-list-item-content>
+                    <v-list-item-title>
+                        Tipitaka Myanmar
+                    </v-list-item-title>
+                </v-list-item-content>
+            </v-list-item>
+        </v-list>
+        
+        
+        <v-divider></v-divider>
+        <v-row justify="center">
+            <v-expansion-panels hover inset >
 
-        <v-expansion-panels>
-            <v-subheader>Title</v-subheader>
-            <v-expansion-panel
-                v-for="(title, key, index) in titles" :index="index" :key="key"
-            >
-            <v-expansion-panel-header>
-                {{ title.text }}
-            </v-expansion-panel-header>
-            <v-expansion-panel-content v-if="Object.keys(title.parliTitles)">
-                <v-list>
-                    <v-list-item-group>
-                        <v-list-item
-                            v-for="(parLiTitle, k, i) in title.parliTitles" :index="i" :key="k"
-                            link
-                            :to="generateLink(parLiTitle)"
-                        >
-                                
-                            <v-list-item-content>
-                                <v-list-item-title>
-                                    {{ parLiTitle.text }}
-                                </v-list-item-title>
-                            </v-list-item-content>
-                        </v-list-item>
-                    </v-list-item-group>
-                </v-list>
-            </v-expansion-panel-content>
-            </v-expansion-panel>
-        </v-expansion-panels>             
+                <v-expansion-panel
+                    v-for="(title, key, index) in titles" 
+                    :index="index" 
+                    :key="key"
+                >
+                    <v-expansion-panel-header ripple>
+                        {{ title.text }}
+                    </v-expansion-panel-header>
+                    <v-expansion-panel-content v-if="Object.keys(title.parliTitles)">
+                        <v-list >
+                            <v-list-item-group >
+                                <v-list-item
+                                    v-for="(parLiTitle, k, i) in title.parliTitles" :index="i" :key="k"
+                                    link
+                                    :to="generateLink(parLiTitle)"
+                                    color="#FFAB00"
+                                    @click="getParLiTitle(parLiTitle.text)"
+                                    ripple
+                                >
+                                        
+                                    <v-list-item-content>
+                                        {{ parLiTitle.text }}
+                                    </v-list-item-content>
+                                </v-list-item>
+                            </v-list-item-group>
+                        </v-list>
+                    </v-expansion-panel-content>
+                </v-expansion-panel>
+            </v-expansion-panels> 
+        </v-row>            
     </v-navigation-drawer>
 </template>
 
@@ -45,7 +61,15 @@ export default{
     methods: {
         generateLink(parLiTitle){
             return `/books/${parLiTitle.file}`
+        },
+
+        getParLiTitle(title){
+            this.$emit('parLiTitle', title);
         }
+
     },
 }
 </script>
+<style scoped>
+
+</style>
