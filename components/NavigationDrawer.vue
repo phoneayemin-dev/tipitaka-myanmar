@@ -15,25 +15,23 @@
         
         
         <v-divider></v-divider>
-        <v-row justify="center" 
-            v-for="(title, key, index) in listTitles" 
-            :index="index" 
-            :key="key"
-        >
-            <v-subheader> {{ title.text }} </v-subheader>
-                
-            <v-expansion-panels hover inset >
-                <v-expansion-panel
-                    v-for="(item, ke, indx) in title.items" 
-                    :index="indx" 
-                    :key="ke"
-                >
-                    <v-expansion-panel-header ripple>
-                        {{ item.text }}
-                    </v-expansion-panel-header>
-                    <v-expansion-panel-content v-if="'sub_items' in item">
-                        <v-list>
-                            <v-list-item-group >
+        <v-container>
+            <v-list flat
+                v-for="(title, key, index) in listTitles" 
+                :index="index" 
+                :key="key"
+            >
+                <v-subheader> {{ title.text }}</v-subheader>
+                <v-list-item-group>
+                    <v-list-item v-for="(item, ke, indx) in title.items"  
+                        :index="indx" 
+                        :key="ke"
+                    >
+                        <v-list-item-content v-if="'sub_items' in item">
+                            <v-list-group>
+                                <template v-slot:activator>
+                                    <v-list-item-title>{{ item.text }}</v-list-item-title>
+                                </template>
                                 <v-list-item
                                     v-for="(parLiTitle, k, i) in item.sub_items" :index="i" :key="k"
                                     link
@@ -45,12 +43,23 @@
                                         {{ parLiTitle.text }}
                                     </v-list-item-content>
                                 </v-list-item>
-                            </v-list-item-group>
-                        </v-list>
-                    </v-expansion-panel-content>
-                </v-expansion-panel>
-            </v-expansion-panels> 
-        </v-row> 
+                            </v-list-group>
+                        </v-list-item-content>
+
+                        <v-list-item-content v-else>
+                            <v-list-item>
+                                <v-list-item-content>
+                                    {{ item.text }}
+                                </v-list-item-content>
+                            </v-list-item>
+                        </v-list-item-content>
+                </v-list-item>
+                </v-list-item-group>
+                
+            </v-list>
+        </v-container>
+        
+        
     </v-navigation-drawer>
 </template>
 
