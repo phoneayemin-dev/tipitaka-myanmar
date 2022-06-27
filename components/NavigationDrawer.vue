@@ -37,6 +37,7 @@
                                     link
                                     color="#FFAB00"
                                     @click="getParLiTitle(parLiTitle.text)"
+                                    :to="generateLink(parLiTitle)"
                                     ripple
                                 >
                                     <v-list-item-content>
@@ -47,7 +48,10 @@
                         </v-list-item-content>
 
                         <v-list-item-content v-else>
-                            <v-list-item>
+                            <v-list-item 
+                                :to="generateLink(item)"
+                                @click="getParLiTitle(item.text)"
+                            >
                                 <v-list-item-content>
                                     {{ item.text }}
                                 </v-list-item-content>
